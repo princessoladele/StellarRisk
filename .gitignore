@@ -1,0 +1,8 @@
+/target
+crates/soroban_anchor/contract/target
+crates/soroban_anchor/contract/test_snapshots
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+.env

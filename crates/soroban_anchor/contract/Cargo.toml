@@ -1,0 +1,28 @@
+[package]
+name = "decision_anchor_contract"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk = "27"
+
+[dev-dependencies]
+soroban-sdk = { version = "27", features = ["testutils"] }
+
+# Standalone workspace: this contract is intentionally excluded from the root
+# StellarRisk workspace so its wasm release profile below never applies to the host
+# application crates.
+[workspace]
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+lto = true
+codegen-units = 1
+panic = "abort"
